@@ -36,7 +36,13 @@ month_name <- c("January",
 
 #### Member 1
 
-Add your code here.
+```{r}
+
+tunes <- c("bloons", "moons", "vrooms", "grooms", "rooms", "wooms", "pooms", "zooms", "looms", "quooms", "noons", "booms")
+
+tunes
+```
+
 
 #### Member 2
 
@@ -57,10 +63,12 @@ Add your code here.
 ## Exercise 2 - Combine into a data frame
 
 ```{r merge-two-vectors, eval = F}
-___ <- tibble::tibble(
+month_tunes <- tibble::tibble(
   "month_name" = month_name,
-  "___" = ___
+  "tunes" = tunes
 )
+
+glimpse(month_tunes)
 ```
 
 #### Member 1
@@ -84,6 +92,32 @@ Add your code here.
 Add your code here.
 
 ## Exercise 3 - Try plotting with `month_name` on the x axis, then recode factors
+
+
+```{r}
+nuumbers <- c(1, 2, 3, 4, 5, 5, 6, 6, 4, 3, 9, 10)
+
+
+month_tuunes <- tibble::tibble(
+  "month_name" = month_name,
+  "tunes" = tunes, 
+  "nuumbers" = nuumbers
+)
+```
+
+
+
+```{r}
+ 
+month_tuuunes <- month_tuunes %>% 
+  mutate(month_name = fct_relevel(month_name, "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"))
+    
+month_tuuunes %>% 
+  ggplot(aes(month_name, nuumbers)) +
+  geom_point()
+
+```
+
 
 #### Member 1
 
